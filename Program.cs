@@ -21,10 +21,11 @@ class Program
         double c = PromptForValidInput("c= ");
         
         Console.WriteLine($"the equation to solve is {a}x² + {b}x + {c} = 0");
-        
+
         //if (b == (y + z) && y * z == a * c)
-        double y = (-b + Math.Sqrt(Math.Pow(b, 2) - 4*a*c))/2*a;
-        double z = (-b - Math.Sqrt(Math.Pow(b, 2) - 4*a*c))/2*a;
+        double y = (-b + Math.Sqrt(Math.Pow(b, 2) - 4 * a * c)) / (2 * a);
+        double z = (-b - Math.Sqrt(Math.Pow(b, 2) - 4 * a * c)) / (2 * a);
+
         Console.WriteLine($"solution is (x + {y*-1})(x + {z*-1}) = 0");
 
         double PromptForValidInput(string promptMessage)
@@ -41,9 +42,5 @@ class Program
             return validNumber;
         }
         
-            
-                
-        
-
     }
 } 
