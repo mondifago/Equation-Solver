@@ -4,35 +4,33 @@ namespace EquationSolver
 {
     public class EquationLogic
     {
-        // Input validator
         public static bool IsValidNumber(string input)
         {
             return !string.IsNullOrWhiteSpace(input) && double.TryParse(input, out _);
         }
 
-        // Calculate discriminant
-        public static double Discriminant(double a, double b, double c)
+        public static double Discriminant(QuadraticEquation equation)
         {
-            return Math.Pow(b, EquationConstants.TWO) - EquationConstants.FOUR * a * c;
+            return Math.Pow(equation.B, EquationConstants.TWO) - EquationConstants.FOUR * equation.A * equation.C;
         }
 
-        public static double CalculateSquareRootOfDiscriminant(double a, double b, double c)
+        public static double CalculateSquareRootOfDiscriminant(QuadraticEquation equation)
         {
-            return Math.Sqrt(Discriminant(a, b, c));
+            return Math.Sqrt(Discriminant(equation));
         }
 
-        public static double CalculateX1(double a, double b, double c)
+        public static QuadraticEquationSolution SolveQuadraticEquation(QuadraticEquation equation)
         {
-            double squareRootOfDiscriminant = CalculateSquareRootOfDiscriminant(a, b, c);
+            QuadraticEquationSolution solution = new QuadraticEquationSolution();
 
-            return (-b + squareRootOfDiscriminant) / (EquationConstants.TWO * a);
-        }
+            solution.Discriminant = Discriminant(equation);
+            solution.SquareRootOfDiscriminant = CalculateSquareRootOfDiscriminant(equation);
 
-        public static double CalculateX2(double a, double b, double c)
-        {
-            double squareRootOfDiscriminant = CalculateSquareRootOfDiscriminant(a, b, c);
+            solution.X1 = (-equation.B + solution.SquareRootOfDiscriminant) / (EquationConstants.TWO * equation.A);
 
-            return (-b - squareRootOfDiscriminant) / (EquationConstants.TWO * a);
+            solution.X2 = (-equation.B - solution.SquareRootOfDiscriminant)  / (EquationConstants.TWO * equation.A);
+
+            return solution;
         }
     }
 }
