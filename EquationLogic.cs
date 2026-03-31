@@ -13,19 +13,26 @@ namespace EquationSolver
         // Calculate discriminant
         public static double Discriminant(double a, double b, double c)
         {
-            return Math.Pow(b, 2) - 4 * a * c;
+            return Math.Pow(b, EquationConstants.TWO) - EquationConstants.FOUR * a * c;
+        }
+
+        public static double CalculateSquareRootOfDiscriminant(double a, double b, double c)
+        {
+            return Math.Sqrt(Discriminant(a, b, c));
         }
 
         public static double CalculateX1(double a, double b, double c)
         {
-            double squareRootOfDiscriminant = Math.Sqrt(Discriminant(a, b, c));
-            return (-b + squareRootOfDiscriminant) / (2 * a);
+            double squareRootOfDiscriminant = CalculateSquareRootOfDiscriminant(a, b, c);
+
+            return (-b + squareRootOfDiscriminant) / (EquationConstants.TWO * a);
         }
 
         public static double CalculateX2(double a, double b, double c)
         {
-            double squareRootOfDiscriminant = Math.Sqrt(Discriminant(a, b, c));
-            return (-b - squareRootOfDiscriminant) / (2 * a);
+            double squareRootOfDiscriminant = CalculateSquareRootOfDiscriminant(a, b, c);
+
+            return (-b - squareRootOfDiscriminant) / (EquationConstants.TWO * a);
         }
     }
 }
