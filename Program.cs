@@ -8,7 +8,6 @@ class Program
         double a;
         double b;
         double c;
-        double squareRootOfDiscriminant;
         double x1;
         double x2;
 
@@ -37,10 +36,8 @@ class Program
         }
         else
         {
-            squareRootOfDiscriminant = Math.Sqrt(DomainLogic.Discriminant(a, b, c));
-
-            x1 = (-b + squareRootOfDiscriminant) / (2 * a);
-            x2 = (-b - squareRootOfDiscriminant) / (2 * a);
+            x1 = DomainLogic.CalculateX1(a, b, c);
+            x2 = DomainLogic.CalculateX2(a, b, c);
 
             EquationUI.ShowSolutions(x1, x2);
         }
