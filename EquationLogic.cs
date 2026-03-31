@@ -2,7 +2,7 @@
 
 namespace EquationSolver
 {
-    public class DomainLogic
+    public class EquationLogic
     {
         // Input validator
         public static bool IsValidNumber(string input)

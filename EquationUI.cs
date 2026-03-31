@@ -15,7 +15,7 @@
             Console.Write(promptMessage);
             string input = Console.ReadLine();
 
-            while (!DomainLogic.IsValidNumber(input))
+            while (!EquationLogic.IsValidNumber(input))
             {
                 Console.WriteLine("\nInvalid input. Please enter a valid number.");
                 Console.Write(promptMessage);
