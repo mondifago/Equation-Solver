@@ -4,11 +4,19 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Variables
+        double a;
+        double b;
+        double c;
+        double squareRootOfDiscriminant;
+        double x1;
+        double x2;
+
         // Introduction
         EquationUI.ShowIntroduction();
 
         // Input
-        double a = EquationUI.PromptForValidInput("a= ");
+        a = EquationUI.PromptForValidInput("a= ");
 
         while (a == 0)
         {
@@ -16,8 +24,8 @@ class Program
             a = EquationUI.PromptForValidInput("a= ");
         }
 
-        double b = EquationUI.PromptForValidInput("b= ");
-        double c = EquationUI.PromptForValidInput("c= ");
+        b = EquationUI.PromptForValidInput("b= ");
+        c = EquationUI.PromptForValidInput("c= ");
 
         // Display equation
         EquationUI.ShowEquation(a, b, c);
@@ -29,10 +37,10 @@ class Program
         }
         else
         {
-            double sqrtD = Math.Sqrt(DomainLogic.Discriminant(a, b, c));
+            squareRootOfDiscriminant = Math.Sqrt(DomainLogic.Discriminant(a, b, c));
 
-            double x1 = (-b + sqrtD) / (2 * a);
-            double x2 = (-b - sqrtD) / (2 * a);
+            x1 = (-b + squareRootOfDiscriminant) / (2 * a);
+            x2 = (-b - squareRootOfDiscriminant) / (2 * a);
 
             EquationUI.ShowSolutions(x1, x2);
         }
