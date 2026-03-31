@@ -4,45 +4,35 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Variables
-        double a;
-        double b;
-        double c;
-        double x1;
-        double x2;
+        QuadraticEquation equation = new QuadraticEquation();
+        QuadraticEquationSolution solution = new QuadraticEquationSolution();
 
-        // Introduction
         EquationUI.ShowIntroduction();
 
-        // Input
-        a = EquationUI.PromptForValidInput("a= ");
+        equation.A = EquationUI.PromptForValidInput("a= ");
 
-        while (a == 0)
+        while (equation.A == 0)
         {
             EquationUI.ShowInvalidQuadraticA();
-            a = EquationUI.PromptForValidInput("a= ");
+            equation.A = EquationUI.PromptForValidInput("a= ");
         }
 
-        b = EquationUI.PromptForValidInput("b= ");
-        c = EquationUI.PromptForValidInput("c= ");
+        equation.B = EquationUI.PromptForValidInput("b= ");
+        equation.C = EquationUI.PromptForValidInput("c= ");
 
-        // Display equation
-        EquationUI.ShowEquation(a, b, c);
+        EquationUI.ShowEquation(equation);
 
-        // Solve
-        if (EquationLogic.Discriminant(a, b, c) < 0)
+        if (EquationLogic.Discriminant(equation) < 0)
         {
             EquationUI.ShowNoRealSolutions();
         }
         else
         {
-            x1 = EquationLogic.CalculateX1(a, b, c);
-            x2 = EquationLogic.CalculateX2(a, b, c);
+            solution = EquationLogic.SolveQuadraticEquation(equation);
 
-            EquationUI.ShowSolutions(x1, x2);
+            EquationUI.ShowSolutions(solution);
         }
 
-        // Exit pause
         EquationUI.ShowExitMessage();
     }
 }
