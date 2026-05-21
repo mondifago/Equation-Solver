@@ -2,10 +2,36 @@
 {
     public static class EquationUI
     {
-        public static void ShowIntroduction()
+        public static void ShowMenu()
         {
-            Console.WriteLine("..........................Welcome to Equation Solver..........................");
+            Console.Clear();
+            Console.WriteLine("************************ Welcome to Equation Solver *************************\n");
             Console.WriteLine("This Program solves different basic mathematics equations");
+            Console.WriteLine("Menu:\n" +
+                              "1. Linear Equation\n" +
+                              "2. Simultaneous Equation\n" +
+                              "3. Quadratic Equation\n" +
+                              "4. Exit program\n\n");
+            Console.Write("Please choose the number of type of equation you want to solve... ");
+        }
+
+        public static int PromptMenuSelection()
+        {
+            string input = Console.ReadLine();
+
+            while (!int.TryParse(input, out int selection) || selection < 1 || selection > 4)
+            {
+                Console.WriteLine("Invalid selection.");
+                Console.Write("Please choose a valid option: ");
+
+                input = Console.ReadLine();
+            }
+
+            return int.Parse(input);
+        }
+
+        public static void ShowQuadraticIntroduction()
+        {
             Console.WriteLine("For Quadratic Equation: ax² + bx + c = 0");
             Console.WriteLine("Please insert the values of a, b, and c");
         }

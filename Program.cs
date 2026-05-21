@@ -4,33 +4,56 @@ class Program
 {
     static void Main(string[] args)
     {
-        QuadraticEquation equation = new QuadraticEquation();
-        QuadraticEquationSolution solution = new QuadraticEquationSolution();
+        EquationUI.ShowMenu();
 
-        EquationUI.ShowIntroduction();
+        int selection = EquationUI.PromptMenuSelection();
 
-        equation.A = EquationUI.PromptForValidInput("a= ");
-
-        while (equation.A == 0)
+        switch (selection)
         {
-            EquationUI.ShowInvalidQuadraticA();
-            equation.A = EquationUI.PromptForValidInput("a= ");
-        }
+            case 1:
+                Console.WriteLine("Linear Equation selected");
+                break;
 
-        equation.B = EquationUI.PromptForValidInput("b= ");
-        equation.C = EquationUI.PromptForValidInput("c= ");
+            case 2:
+                Console.WriteLine("Simultaneous Equation selected");
+                break;
 
-        EquationUI.ShowEquation(equation);
+            case 3:
 
-        if (EquationLogic.Discriminant(equation) < 0)
-        {
-            EquationUI.ShowNoRealSolutions();
-        }
-        else
-        {
-            solution = EquationLogic.SolveQuadraticEquation(equation);
+                QuadraticEquation equation = new QuadraticEquation();
+                QuadraticEquationSolution solution = new QuadraticEquationSolution();
 
-            EquationUI.ShowSolutions(solution);
+                EquationUI.ShowQuadraticIntroduction();
+
+                equation.A = EquationUI.PromptForValidInput("a= ");
+
+                while (equation.A == 0)
+                {
+                    EquationUI.ShowInvalidQuadraticA();
+
+                    equation.A = EquationUI.PromptForValidInput("a= ");
+                }
+
+                equation.B = EquationUI.PromptForValidInput("b= ");
+                equation.C = EquationUI.PromptForValidInput("c= ");
+
+                EquationUI.ShowEquation(equation);
+
+                if (EquationLogic.Discriminant(equation) < 0)
+                {
+                    EquationUI.ShowNoRealSolutions();
+                }
+                else
+                {
+                    solution = EquationLogic.SolveQuadraticEquation(equation);
+
+                    EquationUI.ShowSolutions(solution);
+                }
+
+                break;
+
+            case 4:
+                return;
         }
 
         EquationUI.ShowExitMessage();
