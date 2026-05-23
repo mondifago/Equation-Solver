@@ -30,11 +30,7 @@
             return int.Parse(input);
         }
 
-        public static void ShowQuadraticIntroduction()
-        {
-            Console.WriteLine("For Quadratic Equation: ax² + bx + c = 0");
-            Console.WriteLine("Please insert the values of a, b, and c");
-        }
+        
 
         public static double PromptForValidInput(string promptMessage)
         {
@@ -51,9 +47,22 @@
             return double.Parse(input);
         }
 
+        public static void ShowExitMessage()
+        {
+            Console.WriteLine("\nPress any key to exit...");
+            Console.ReadKey();
+        }
+
+        #region Quadratic Equation UI Methods
+        public static void ShowQuadraticIntroduction()
+        {
+            Console.WriteLine("For Quadratic Equation: ax² + bx + c = 0");
+            Console.WriteLine("Please insert the values of a, b, and c");
+        }
+
         public static void ShowInvalidQuadraticA()
         {
-            Console.WriteLine("In a Quadratic Equation, a cannot be zero");
+            Console.WriteLine("In a Quadratic Equation,the value of \"A\" cannot be zero");
         }
 
         public static void ShowEquation(QuadraticEquation equation)
@@ -71,11 +80,30 @@
             Console.WriteLine($"x = {solution.X1} or x = {solution.X2}");
             Console.WriteLine($"Factorised form: (x - {solution.X1})(x - {solution.X2}) = 0");
         }
+        #endregion
 
-        public static void ShowExitMessage()
+        #region Linear Equation UI Methods
+        public static void ShowInvalidLinearA()
         {
-            Console.WriteLine("\nPress any key to exit...");
-            Console.ReadKey();
+            Console.WriteLine("the value of \"A\" cannot be zero");
         }
+
+        public static void ShowLinearIntroduction()
+        {
+            Console.WriteLine("For Linear Equation: ax + b = 0");
+            Console.WriteLine("Please insert the values of a and b");
+        }
+
+        public static void ShowEquation(LinearEquation equation)
+        {
+            Console.WriteLine($"The equation to solve is {equation.A}x + {equation.B} = 0");
+        }
+
+        public static void ShowSolutions(LinearEquationSolution solution)
+        {
+            Console.WriteLine($"x = {solution.X}");
+        }
+        #endregion
+
     }
 }

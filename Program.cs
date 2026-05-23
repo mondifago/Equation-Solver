@@ -11,7 +11,27 @@ class Program
         switch (selection)
         {
             case 1:
-                Console.WriteLine("Linear Equation selected");
+                LinearEquation linearEquation = new LinearEquation();
+                LinearEquationSolution linearSolution = new LinearEquationSolution();
+
+                EquationUI.ShowLinearIntroduction();
+
+                linearEquation.A = EquationUI.PromptForValidInput("a= ");
+
+                while (linearEquation.A == 0)
+                {
+                    EquationUI.ShowInvalidLinearA();
+
+                    linearEquation.A = EquationUI.PromptForValidInput("a= ");
+                }
+
+                linearEquation.B = EquationUI.PromptForValidInput("b= ");
+
+                EquationUI.ShowEquation(linearEquation);
+
+                linearSolution = EquationLogic.SolveLinearEquation(linearEquation);
+
+                EquationUI.ShowSolutions(linearSolution);
                 break;
 
             case 2:
