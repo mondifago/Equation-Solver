@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
+﻿
 namespace EquationSolver
 {
     public class EquationLogic
