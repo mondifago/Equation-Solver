@@ -60,11 +60,6 @@
             Console.WriteLine("Please insert the values of a, b, and c");
         }
 
-        public static void ShowInvalidQuadraticA()
-        {
-            Console.WriteLine("In a Quadratic Equation,the value of \"A\" cannot be zero");
-        }
-
         public static void ShowEquation(QuadraticEquation equation)
         {
             Console.WriteLine($"The equation to solve is {equation.A}x² + {equation.B}x + {equation.C} = 0");
@@ -85,7 +80,7 @@
         #region Linear Equation UI Methods
         public static void ShowInvalidLinearA()
         {
-            Console.WriteLine("the value of \"A\" cannot be zero");
+            Console.WriteLine("the value of \"a\" cannot be zero");
         }
 
         public static void ShowLinearIntroduction()
