@@ -79,6 +79,16 @@ namespace EquationSolver
             Console.WriteLine("Please insert the values for each equation");
         }
 
+        public static void ShowEquationOne()
+        {
+            Console.WriteLine("\nEquation 1:");
+        }
+
+        public static void ShowEquationTwo()
+        {
+            Console.WriteLine("\nEquation 2:");
+        }
+
         public static void ShowEquation(SimultaneousEquation equation)
         {
             Console.WriteLine($"Equation 1: {equation.A1}x + {equation.B1}y = {equation.C1}");
@@ -117,6 +127,11 @@ namespace EquationSolver
         {
             Console.WriteLine($"x = {solution.X1} or x = {solution.X2}");
             Console.WriteLine($"Factorised form: (x - {solution.X1})(x - {solution.X2}) = 0");
+        }
+
+        public static void ShowRevertToLinearEquationMessage()
+        {
+            Console.WriteLine("\nSince a = 0, the equation becomes a Linear Equation.\n");
         }
         #endregion
 

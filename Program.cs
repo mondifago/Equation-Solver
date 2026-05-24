@@ -1,4 +1,6 @@
-﻿namespace EquationSolver;
+﻿using EquationSolver.Class_Models;
+
+namespace EquationSolver;
 
 class Program
 {
@@ -38,8 +40,36 @@ class Program
                 }
 
             case 2:
-                Console.WriteLine("Simultaneous Equation selected");
-                break;
+                {
+                    SimultaneousEquation equation = new SimultaneousEquation();
+                    SimultaneousEquationSolution solution = new SimultaneousEquationSolution();
+
+                    EquationUI.ShowSimultaneousIntroduction();
+
+                    EquationUI.ShowEquationOne();
+                    equation.A1 = EquationUI.PromptForValidInput("a1= ");
+                    equation.B1 = EquationUI.PromptForValidInput("b1= ");
+                    equation.C1 = EquationUI.PromptForValidInput("c1= ");
+
+                    EquationUI.ShowEquationTwo();
+                    equation.A2 = EquationUI.PromptForValidInput("a2= ");
+                    equation.B2 = EquationUI.PromptForValidInput("b2= ");
+                    equation.C2 = EquationUI.PromptForValidInput("c2= ");
+
+                    EquationUI.ShowEquation(equation);
+
+                    if (!EquationLogic.HasUniqueSolution(equation))
+                    {
+                        EquationUI.ShowNoUniqueSolution();
+                    }
+                    else
+                    {
+                        solution = EquationLogic.SolveSimultaneousEquation(equation);
+                        EquationUI.ShowSolutions(solution);
+                    }
+
+                    break;
+                }
 
             case 3:
                 {
@@ -54,7 +84,7 @@ class Program
 
                     if (equation.A == 0)
                     {
-                        Console.WriteLine("\nSince a = 0, the equation becomes a Linear Equation.\n");
+                        EquationUI.ShowRevertToLinearEquationMessage();
 
                         LinearEquation linearEquation = new LinearEquation();
 
