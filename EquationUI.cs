@@ -1,4 +1,6 @@
-﻿namespace EquationSolver
+﻿using EquationSolver.Class_Models;
+
+namespace EquationSolver
 {
     public static class EquationUI
     {
@@ -30,8 +32,6 @@
             return int.Parse(input);
         }
 
-        
-
         public static double PromptForValidInput(string promptMessage)
         {
             Console.Write(promptMessage);
@@ -47,11 +47,54 @@
             return double.Parse(input);
         }
 
-        public static void ShowExitMessage()
+        #region Linear Equation UI Methods
+        public static void ShowInvalidLinearA()
         {
-            Console.WriteLine("\nPress any key to exit...");
-            Console.ReadKey();
+            Console.WriteLine("the value of \"a\" cannot be zero");
         }
+
+        public static void ShowLinearIntroduction()
+        {
+            Console.WriteLine("For Linear Equation: ax + b = 0");
+            Console.WriteLine("Please insert the values of a and b");
+        }
+
+        public static void ShowEquation(LinearEquation equation)
+        {
+            Console.WriteLine($"The equation to solve is {equation.A}x + {equation.B} = 0");
+        }
+
+        public static void ShowSolutions(LinearEquationSolution solution)
+        {
+            Console.WriteLine($"x = {solution.X}");
+        }
+        #endregion
+
+        #region Simultaneous Equation UI Methods
+        public static void ShowSimultaneousIntroduction()
+        {
+            Console.WriteLine("For Simultaneous Equations:");
+            Console.WriteLine("  Equation 1: a1x + b1y = c1");
+            Console.WriteLine("  Equation 2: a2x + b2y = c2");
+            Console.WriteLine("Please insert the values for each equation");
+        }
+
+        public static void ShowEquation(SimultaneousEquation equation)
+        {
+            Console.WriteLine($"Equation 1: {equation.A1}x + {equation.B1}y = {equation.C1}");
+            Console.WriteLine($"Equation 2: {equation.A2}x + {equation.B2}y = {equation.C2}");
+        }
+
+        public static void ShowSolutions(SimultaneousEquationSolution solution)
+        {
+            Console.WriteLine($"x = {solution.X}, y = {solution.Y}");
+        }
+
+        public static void ShowNoUniqueSolution()
+        {
+            Console.WriteLine("This system has no unique solution (equations may be parallel or identical).");
+        }
+        #endregion
 
         #region Quadratic Equation UI Methods
         public static void ShowQuadraticIntroduction()
@@ -77,28 +120,11 @@
         }
         #endregion
 
-        #region Linear Equation UI Methods
-        public static void ShowInvalidLinearA()
+        public static void ShowExitMessage()
         {
-            Console.WriteLine("the value of \"a\" cannot be zero");
+            Console.WriteLine("\nPress any key to exit...");
+            Console.ReadKey();
         }
-
-        public static void ShowLinearIntroduction()
-        {
-            Console.WriteLine("For Linear Equation: ax + b = 0");
-            Console.WriteLine("Please insert the values of a and b");
-        }
-
-        public static void ShowEquation(LinearEquation equation)
-        {
-            Console.WriteLine($"The equation to solve is {equation.A}x + {equation.B} = 0");
-        }
-
-        public static void ShowSolutions(LinearEquationSolution solution)
-        {
-            Console.WriteLine($"x = {solution.X}");
-        }
-        #endregion
 
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using EquationSolver.Class_Models;
+
 namespace EquationSolver
 {
     public class EquationLogic
@@ -37,6 +39,29 @@ namespace EquationSolver
             solution.X = -equation.B / equation.A;
 
             return solution;
+        }
+        #endregion
+
+        #region Simultaneous Equation Logic Methods
+        public static double Determinant(SimultaneousEquation equation)
+        {
+            return equation.A1 * equation.B2 - equation.A2 * equation.B1;
+        }
+
+        public static SimultaneousEquationSolution SolveSimultaneousEquation(SimultaneousEquation equation)
+        {
+            SimultaneousEquationSolution solution = new SimultaneousEquationSolution();
+            double determinant = Determinant(equation);
+
+            solution.X = (equation.C1 * equation.B2 - equation.C2 * equation.B1) / determinant;
+            solution.Y = (equation.A1 * equation.C2 - equation.A2 * equation.C1) / determinant;
+
+            return solution;
+        }
+
+        public static bool HasUniqueSolution(SimultaneousEquation equation)
+        {
+            return Determinant(equation) != 0;
         }
         #endregion
 
