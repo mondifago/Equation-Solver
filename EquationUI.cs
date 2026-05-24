@@ -47,6 +47,25 @@ namespace EquationSolver
             return double.Parse(input);
         }
 
+        public static void ShowEquationSeparator()
+        {
+            Console.WriteLine("\n─────────────────────────────────────\n");
+        }
+
+        public static bool PromptContinueOrMenu(string equationType)
+        {
+            Console.WriteLine($"\nPress 1 to solve another {equationType}, or 2 to return to main menu.");
+            string input = Console.ReadLine();
+
+            while (input != "1" && input != "2")
+            {
+                Console.WriteLine("Invalid input. Please press 1 or 2.");
+                input = Console.ReadLine();
+            }
+
+            return input == "1";
+        }
+
         #region Linear Equation UI Methods
         public static void ShowInvalidLinearA()
         {
@@ -134,12 +153,6 @@ namespace EquationSolver
             Console.WriteLine("\nSince a = 0, the equation becomes a Linear Equation.\n");
         }
         #endregion
-
-        public static void ShowExitMessage()
-        {
-            Console.WriteLine("\nPress any key to exit...");
-            Console.ReadKey();
-        }
 
     }
 }

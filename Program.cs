@@ -6,121 +6,146 @@ class Program
 {
     static void Main(string[] args)
     {
-        EquationUI.ShowMenu();
-
-        int selection = EquationUI.PromptMenuSelection();
-
-        switch (selection)
+        bool running = true;
+        while (running)
         {
-            case 1:
-                {
-                    LinearEquation linearEquation = new LinearEquation();
-                    LinearEquationSolution linearSolution = new LinearEquationSolution();
+            EquationUI.ShowMenu();
+            int selection = EquationUI.PromptMenuSelection();
 
-                    EquationUI.ShowLinearIntroduction();
-
-                    linearEquation.A = EquationUI.PromptForValidInput("a= ");
-
-                    while (linearEquation.A == 0)
+            switch (selection)
+            {
+                case 1:
                     {
-                        EquationUI.ShowInvalidLinearA();
+                        Console.Clear();
+                        EquationUI.ShowLinearIntroduction();
 
-                        linearEquation.A = EquationUI.PromptForValidInput("a= ");
+                        bool continueLinear = true;
+                        bool firstEquation = true;
+
+                        while (continueLinear)
+                        {
+                            if (!firstEquation) EquationUI.ShowEquationSeparator();
+
+                            LinearEquation equation = new LinearEquation();
+
+                            equation.A = EquationUI.PromptForValidInput("a= ");
+
+                            while (equation.A == 0)
+                            {
+                                EquationUI.ShowInvalidLinearA();
+                                equation.A = EquationUI.PromptForValidInput("a= ");
+                            }
+                            equation.B = EquationUI.PromptForValidInput("b= ");
+
+                            EquationUI.ShowEquation(equation);
+                            LinearEquationSolution solution = EquationLogic.SolveLinearEquation(equation);
+                            EquationUI.ShowSolutions(solution);
+
+                            continueLinear = EquationUI.PromptContinueOrMenu("linear equation");
+                            firstEquation = false;
+                        }
+                        break;
                     }
 
-                    linearEquation.B = EquationUI.PromptForValidInput("b= ");
-
-                    EquationUI.ShowEquation(linearEquation);
-
-                    linearSolution = EquationLogic.SolveLinearEquation(linearEquation);
-
-                    EquationUI.ShowSolutions(linearSolution);
-
-                    break;
-                }
-
-            case 2:
-                {
-                    SimultaneousEquation equation = new SimultaneousEquation();
-                    SimultaneousEquationSolution solution = new SimultaneousEquationSolution();
-
-                    EquationUI.ShowSimultaneousIntroduction();
-
-                    EquationUI.ShowEquationOne();
-                    equation.A1 = EquationUI.PromptForValidInput("a1= ");
-                    equation.B1 = EquationUI.PromptForValidInput("b1= ");
-                    equation.C1 = EquationUI.PromptForValidInput("c1= ");
-
-                    EquationUI.ShowEquationTwo();
-                    equation.A2 = EquationUI.PromptForValidInput("a2= ");
-                    equation.B2 = EquationUI.PromptForValidInput("b2= ");
-                    equation.C2 = EquationUI.PromptForValidInput("c2= ");
-
-                    EquationUI.ShowEquation(equation);
-
-                    if (!EquationLogic.HasUniqueSolution(equation))
+                case 2:
                     {
-                        EquationUI.ShowNoUniqueSolution();
-                    }
-                    else
-                    {
-                        solution = EquationLogic.SolveSimultaneousEquation(equation);
-                        EquationUI.ShowSolutions(solution);
-                    }
+                        Console.Clear();
+                        EquationUI.ShowSimultaneousIntroduction();
 
-                    break;
-                }
+                        bool continueSimultaneous = true;
+                        bool firstEquation = true;
 
-            case 3:
-                {
-                    QuadraticEquation equation = new QuadraticEquation();
-                    QuadraticEquationSolution solution = new QuadraticEquationSolution();
+                        while (continueSimultaneous)
+                        {
+                            if (!firstEquation) EquationUI.ShowEquationSeparator();
 
-                    EquationUI.ShowQuadraticIntroduction();
+                            SimultaneousEquation equation = new SimultaneousEquation();
 
-                    equation.A = EquationUI.PromptForValidInput("a= ");
-                    equation.B = EquationUI.PromptForValidInput("b= ");
-                    equation.C = EquationUI.PromptForValidInput("c= ");
+                            EquationUI.ShowEquationOne();
+                            equation.A1 = EquationUI.PromptForValidInput("a1= ");
+                            equation.B1 = EquationUI.PromptForValidInput("b1= ");
+                            equation.C1 = EquationUI.PromptForValidInput("c1= ");
 
-                    if (equation.A == 0)
-                    {
-                        EquationUI.ShowRevertToLinearEquationMessage();
+                            EquationUI.ShowEquationTwo();
+                            equation.A2 = EquationUI.PromptForValidInput("a2= ");
+                            equation.B2 = EquationUI.PromptForValidInput("b2= ");
+                            equation.C2 = EquationUI.PromptForValidInput("c2= ");
 
-                        LinearEquation linearEquation = new LinearEquation();
+                            EquationUI.ShowEquation(equation);
 
-                        linearEquation.A = equation.B;
-                        linearEquation.B = equation.C;
+                            if (!EquationLogic.HasUniqueSolution(equation))
+                            {
+                                EquationUI.ShowNoUniqueSolution();
+                            }
+                            else
+                            {
+                                SimultaneousEquationSolution solution = EquationLogic.SolveSimultaneousEquation(equation);
+                                EquationUI.ShowSolutions(solution);
+                            }
 
-                        EquationUI.ShowEquation(linearEquation);
-
-                        LinearEquationSolution linearSolution =
-                            EquationLogic.SolveLinearEquation(linearEquation);
-
-                        EquationUI.ShowSolutions(linearSolution);
+                            continueSimultaneous = EquationUI.PromptContinueOrMenu("simultaneous equation");
+                            firstEquation = false;
+                        }
 
                         break;
                     }
 
-                    EquationUI.ShowEquation(equation);
-
-                    if (EquationLogic.Discriminant(equation) < 0)
+                case 3:
                     {
-                        EquationUI.ShowNoRealSolutions();
-                    }
-                    else
-                    {
-                        solution = EquationLogic.SolveQuadraticEquation(equation);
+                        Console.Clear();
+                        EquationUI.ShowQuadraticIntroduction();
 
-                        EquationUI.ShowSolutions(solution);
-                    }
+                        bool continueQuadratic = true;
+                        bool firstEquation = true;
 
-                    break;
-                }
+                        while (continueQuadratic)
+                        {
+                            if (!firstEquation) EquationUI.ShowEquationSeparator();
+
+                            QuadraticEquation equation = new QuadraticEquation();
+
+                            equation.A = EquationUI.PromptForValidInput("a= ");
+                            equation.B = EquationUI.PromptForValidInput("b= ");
+                            equation.C = EquationUI.PromptForValidInput("c= ");
+
+                            if (equation.A == 0)
+                            {
+                                EquationUI.ShowRevertToLinearEquationMessage();
+
+                                LinearEquation linearEquation = new LinearEquation();
+                                linearEquation.A = equation.B;
+                                linearEquation.B = equation.C;
+
+                                EquationUI.ShowEquation(linearEquation);
+                                LinearEquationSolution linearSolution = EquationLogic.SolveLinearEquation(linearEquation);
+                                EquationUI.ShowSolutions(linearSolution);
+                            }
+                            else
+                            {
+                                EquationUI.ShowEquation(equation);
+
+                                if (EquationLogic.Discriminant(equation) < 0)
+                                {
+                                    EquationUI.ShowNoRealSolutions();
+                                }
+                                else
+                                {
+                                    QuadraticEquationSolution solution = EquationLogic.SolveQuadraticEquation(equation);
+                                    EquationUI.ShowSolutions(solution);
+                                }
+                            }
+
+                            continueQuadratic = EquationUI.PromptContinueOrMenu("quadratic equation");
+                            firstEquation = false;
+                        }
+                        break;
+                    }
 
                 case 4:
-                    return;
+                    running = false;
+                    break;
+            }
         }
 
-        EquationUI.ShowExitMessage();
     }
 }
