@@ -3,12 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\umadu\\source\\repos\\mondifago\\Equation-Solver\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6636A5CF-9DED-46A0-8861-491C92EF3377}|EquationSolver.csproj|c:\\users\\umadu\\source\\repos\\mondifago\\equation-solver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6636A5CF-9DED-46A0-8861-491C92EF3377}|EquationSolver.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6636A5CF-9DED-46A0-8861-491C92EF3377}|EquationSolver.csproj|c:\\users\\umadu\\source\\repos\\mondifago\\equation-solver\\equationsolver.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6636A5CF-9DED-46A0-8861-491C92EF3377}|EquationSolver.csproj|solutionrelative:equationsolver.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{05843F42-A965-40EE-AD89-D65228F30A27}|..\\EquationSolver.Tests\\EquationSolver.Tests.csproj|c:\\users\\umadu\\source\\repos\\mondifago\\equationsolver.tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +13,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 217,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +25,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EquationSolver",
-              "DocumentMoniker": "C:\\Users\\umadu\\source\\repos\\mondifago\\Equation-Solver\\EquationSolver.csproj",
-              "RelativeDocumentMoniker": "EquationSolver.csproj",
-              "ToolTip": "C:\\Users\\umadu\\source\\repos\\mondifago\\Equation-Solver\\EquationSolver.csproj",
-              "RelativeToolTip": "EquationSolver.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-22T07:00:39.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\umadu\\source\\repos\\mondifago\\Equation-Solver\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\umadu\\source\\repos\\mondifago\\Equation-Solver\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwDEAAAAFAAAAAAAAAA==",
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\umadu\\source\\repos\\mondifago\\EquationSolver.Tests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "..\\EquationSolver.Tests\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\umadu\\source\\repos\\mondifago\\EquationSolver.Tests\\UnitTest1.cs",
+              "RelativeToolTip": "..\\EquationSolver.Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T06:37:12.771Z",
+              "WhenOpened": "2026-05-28T13:12:03.964Z",
               "EditorCaption": ""
             }
           ]
