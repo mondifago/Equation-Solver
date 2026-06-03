@@ -10,7 +10,7 @@ A C# console application that solves linear, simultaneous, and quadratic equatio
 - **Simultaneous equations** — solves two-variable systems using Cramer's rule; detects parallel or identical lines
 - **Quadratic equations** — solves `ax² + bx + c = 0` via the quadratic formula; detects no-real-solution cases and gracefully falls back to linear solving when `a = 0`
 - Input validation on all coefficients with clear error messages
-- Menu-driven loop — solve multiple equations of the same type without restarting
+- Menu — solve multiple equations of the same type without restarting
 
 ---
 
@@ -44,8 +44,8 @@ EquationSolverSolution/
 
 A strict separation of concerns is maintained throughout:
 
-- **`EquationLogic.cs`** — pure computation only. No console calls, no formatting. All solving methods, discriminant calculations, and input validation live here.
-- **`EquationUI.cs`** — display and interaction only. No maths logic. All `Console.Write`, `Console.ReadLine`, and output formatting live here.
+- **`EquationLogic.cs`** — pure computation only. All solving methods, discriminant calculations, and input validation live here.
+- **`EquationUI.cs`** — display and interaction only. All `Console.Write`, `Console.ReadLine`, and output formatting live here.
 - **`Program.cs`** — orchestrates the two: reads user choices, calls logic, passes results to UI.
 
 ---
